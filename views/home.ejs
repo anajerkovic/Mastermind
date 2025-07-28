@@ -1,0 +1,47 @@
+<%- include("partials/header.ejs") %>
+ 
+    <div class="container text-center p-4 my-4">
+        <h1 class="honk title">Mastermind</h1>
+        <div class="container">
+            <form action="/game" method="get">
+                <button class="play custom-btn pixelify-sans my-3">Play</button>
+            </form>
+
+            <div id="wrapper">
+                <p class="rules custom-btn pixelify-sans my-3"><a href="javascript:void(0)" onclick="toggle_visibility('rules');">Rules</a></p>
+            </div>
+
+            <div id="rules" class="popup-position">
+                <div id="popup-wrapper">
+                    <div id="popup-container">
+                        <a class="space-mono-regular" href="javascript:void(0)" onclick="toggle_visibility('rules');">exit</a>
+                        <h2 class="pixelify-sans">The Rules</h2>
+                        <p class="space-mono-regular">
+                            The goal of the game is to guess the correct secret code!<br>
+                            The secret code consists of digits from 1 to 9.<br>
+                            After every guess you will be given 2 pieces of information.<br>
+                            The first box - The Bulls - will tell you how many digitis of your 
+                            guess are correct and in the 
+                            correct spot.<br>
+                            The second box - The Cows - will tell you how many digits of your 
+                            guess are correct but in the wrong 
+                            spot.<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggle_visibility(id) {
+            var e = document.getElementById(id);
+            if (e.style.display == 'block') {
+                e.style.display = 'none';
+            } else {
+                e.style.display = 'block';
+            }
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<%- include("partials/header.ejs") %>
+
+    <div class="game-container p-4">
+        <h1 class="honk heading">Mastermind</h1>
+
+        <form class="setup press-start-2p-regular " action="/setup" method="post">
+            <label for="length">The length:</label>
+            <select class="p-1" name="length">
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label for="attempt">The attempts:</label>
+            <select class="p-1" name="attempt">
+                <% for(let i=5; i<16; i++) { %>
+                    <option value=<%= i %>><%= i %></option>
+                <% } %>
+            </select><br>
+            <button class="my-2 create-btn" type="submit">Create Code</button>
+        </form>
+        
+        <div class="board press-start-2p-regular ">
+        <% for(let i = 0; i < attempt; i++) {%>
+            <div class="attempt">
+                <% for(let j = 0; j < length; j++) { %>
+                    <input class="cell" type="text" maxlength="1">
+                <% } %>
+                <div class="p-2"></div>
+                <div class="cell info-cell"></div>
+                <div class="cell info-cell"></div>
+            </div>
+        <% } %>
+        </div>
+        <br>
+
+        <div class="my-3 press-start-2p-regular">
+            <h1 class="wavy" id="gameResult"></h1>
+            <h3 id="secretCode" class="hidden ">The secret code was: <%= secretCode %></h3>
+        
+            <form action="/game" method="get">
+                <button id="replayButton" class="hidden custom-btn replay pixelify-sans" type="submit">Play Again</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/scripts/game.js"></script>
+</body>
+</html>
